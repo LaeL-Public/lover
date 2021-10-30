@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Love U</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="confession-txt">There are three things on the world, Sun, Moon and You. Sun for morning, Moon for night and You forever!</div>
+    <audio id="bgm" src="music/告白气球 - 周杰伦.mp3" autoplay="autoplay" loop="true"></audio>
+    <script src="js/Balloon.js"></script>
+    <script>
+        let n = 1;
+        let t = setInterval(() => {
+            let img = "url(image/pic" + n + ".jpg)";
+            let b2 = new Balloon(img);
+            b2.drawBalloon(document.body);
+            b2.run();
+            n++;
+            if (n > 7) {
+                clearInterval(t);
+            }
+        }, 5000);
+
+        for (let i = 0; i < 25; i++) {
+            let b = new Balloon();
+            b.drawBalloon(document.body);
+            b.run();
+        }
+
+    </script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            function audioAutoPlay() {
+                var audio = document.getElementById('bgm');
+                    audio.play();
+                document.addEventListener("WeixinJSBridgeReady", function () {
+                    audio.play();
+                }, false);
+            }
+            audioAutoPlay();
+        });
+       
+          if (/i(Phone|P(o|a)d)/.test(navigator.userAgent)) {
+            $(document).one('touchstart',
+              function(e) {
+                  $('#bgm').get(0).touchstart = true;
+                  $('#bgm').get(0).play();
+                  return false;
+              });
+          }
+      </script>
+</body>
+
+</html>
